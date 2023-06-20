@@ -24,6 +24,13 @@ const HomePage = () => {
             </div>
             <div className="column is-one-third">
               <div className="box">
+                <Link to={"#"} className="title">
+                  Coming Soon ...
+                </Link>
+              </div>
+            </div>
+            {/* <div className="column is-one-third">
+              <div className="box">
                 <p className="title">Service Name 3</p>
               </div>
             </div>
@@ -51,7 +58,7 @@ const HomePage = () => {
               <div className="box">
                 <p className="title">Service Name 8</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

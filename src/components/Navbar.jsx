@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="https://bulma.io">
+        <a className="navbar-item" href="https://api-checker.chapimenge.com">
         API-Cheker
         </a>
 
@@ -24,11 +24,11 @@ export default function Navbar() {
 
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-          <a className="navbar-item">Home</a>
+          <a className="navbar-item" href="/">Home</a>
 
-          <a className="navbar-item">Documentation</a>
+          <a className="navbar-item" href="https://chapimenge.com/">My site</a>
 
-          <div className="navbar-item has-dropdown is-hoverable">
+          {/* <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">More</a>
 
             <div className="navbar-dropdown">
@@ -38,10 +38,10 @@ export default function Navbar() {
               <hr className="navbar-divider" />
               <a className="navbar-item">Report an issue</a>
             </div>
-          </div>
+          </div> */}
         </div>
 
-        <div className="navbar-end">
+        {/* <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
               <a className="button is-primary">
@@ -50,7 +50,7 @@ export default function Navbar() {
               <a className="button is-light">Log in</a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </nav>
   );
