@@ -6,6 +6,7 @@ import Homepage from "./components/Homepage";
 import TelegramBot from "./services/TelegramBot";
 import TwilioTokenChecker from "./services/TwilioTokenChecker";
 import Layout from "./Layout";
+import GoogleMap from "./services/GoogleMap";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="telegram-bot-token" element={<TelegramBot />} />
           <Route path="twilio-token" element={<TwilioTokenChecker />} />
+          <Route path="google-map" element={<GoogleMap />} />
         </Route>
       </Routes>
     </div>

@@ -59,7 +59,9 @@ const TelegramBot = () => {
           <div className="content">
             {result && (
               <div>
-                <h2 className="subtitle">Result</h2>
+                <h2 className="subtitle">
+                  Result ({result.error ? 'Invalid' : 'Valid'})
+                </h2>
                 <pre>{JSON.stringify(result, null, 2)}</pre>
               </div>
             )}

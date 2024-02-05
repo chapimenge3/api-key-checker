@@ -5,14 +5,11 @@ const TwilioTokenChecker = () => {
   const [accountSid, setAccountSid] = useState("");
   const [authToken, setAuthToken] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setIsLoading(true);
-    setIsSuccess(false);
     setError(null);
 
     try {
@@ -26,7 +23,6 @@ const TwilioTokenChecker = () => {
         }
       );
       setIsLoading(false);
-      setIsSuccess(true);
       setResult(response.data);
     } catch (error) {
       setIsLoading(false);
@@ -38,73 +34,67 @@ const TwilioTokenChecker = () => {
     <div className="container">
       <div className="columns">
         <div className="column">
-          <h1 className="title">Twilio Key checker</h1>
+          <h1 className="title">Twilio API key checker</h1>
         </div>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div className="field">
-          <label htmlFor="accountSid" className="label">
-            Account SID
-          </label>
-          <div className="control">
-            <input
-              type="text"
-              id="accountSid"
-              className="input"
-              value={accountSid}
-              onChange={(e) => setAccountSid(e.target.value)}
-              required
-            />
+      <div className="columns">
+        <div className="column">
+          <div className="field">
+            <label className="label">Account SID</label>
+            <div className="control">
+              <input
+                type="text"
+                id="accountSid"
+                className="input"
+                value={accountSid}
+                onChange={(e) => setAccountSid(e.target.value)}
+                required
+              />
+
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Auth Token</label>
+            <div className="control">
+              <input
+                type="password"
+                id="authToken"
+                className="input"
+                value={authToken}
+                onChange={(e) => setAuthToken(e.target.value)}
+                required
+              />
+
+            </div>
+          </div>
+          <div className="field">
+            <div className="control">
+              <button
+                className={`button is-primary ${isLoading ? 'is-loading' : ''}`}
+                onClick={handleSubmit}
+              >
+                Check Token
+              </button>
+            </div>
           </div>
         </div>
-        <div className="field">
-          <label htmlFor="authToken" className="label">
-            Auth Token
-          </label>
-          <div className="control">
-            <input
-              type="password"
-              id="authToken"
-              className="input"
-              value={authToken}
-              onChange={(e) => setAuthToken(e.target.value)}
-              required
-            />
+        <div className="column">
+          <div className="content">
+            {result && (
+              <div>
+                <h2 className="subtitle">Result (Valid Twilio API key)</h2>
+                <pre>{JSON.stringify(result, null, 2)}</pre>
+              </div>
+            )}
+            {error && (
+              <div className="notification is-danger">
+                <button className="delete" onClick={() => setError(null)}></button>
+                Invalid Account SID or Auth Token
+              </div>
+            )}
           </div>
         </div>
-        <div className="field">
-          <div className="control">
-            <button
-              type="submit"
-              className={`button is-primary ${isLoading ? "is-loading" : ""}`}
-              disabled={isLoading}
-            >
-              Check Token
-            </button>
-          </div>
-        </div>
-      </form>
-      <br />
-      <br />
-      {error && (
-        <div className="notification is-danger">
-          <button className="delete" onClick={() => setError(null)}></button>
-          Invalid Account SID or Auth Token"
-        </div>
-      )}
-      {isSuccess && (
-        <div>
-          <div className="notification is-success">
-            <button
-              className="delete"
-              onClick={() => setIsSuccess(false)}
-            ></button>
-            Token is valid!
-            <h2 className="subtitle">Result</h2>
-          </div>
-          <pre>{JSON.stringify(result, null, 2)}</pre>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

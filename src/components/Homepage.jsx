@@ -24,6 +24,13 @@ const HomePage = () => {
             </div>
             <div className="column is-one-third">
               <div className="box">
+                <Link to={"/google-map"} className="title">
+                  Google Map
+                </Link>
+              </div>
+            </div>
+            <div className="column is-one-third">
+              <div className="box">
                 <Link to={"#"} className="title">
                   Coming Soon ...
                 </Link>
